@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <>
       <div>Home Page</div>
-      <Link to={'/'}>Take me back</Link>
+      <Link to={'/register'}>Take me to auth pagk</Link>
     </>
   );
 }
