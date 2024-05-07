@@ -1,0 +1,33 @@
+.spinner {
+    /* Add a class name for better maintainability */
+    display: flex;
+    height: 100vh;
+    /* Adjust for viewport height if needed */
+    width: 100vw;
+    /* Adjust for viewport width if needed */
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner div {
+    height: 1.2rem;
+    /* Adjust size as desired */
+    width: 1.2rem;
+    /* Adjust size as desired */
+    animation: spin 1s linear infinite;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    /* Adjust border color */
+    border-top-color: #333;
+    /* Adjust top border color */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
