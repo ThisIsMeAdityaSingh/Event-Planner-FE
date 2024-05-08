@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Loader from "../pages/loading-page";
 import { Login, Register } from "../pages";
 import HomePage from "../pages/home";
+import Dashboard from "../pages/dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -27,4 +28,12 @@ export const router = createBrowserRouter([
       </React.Suspense>
     ),
   },
+  {
+    path: "/dashboard",
+    element: (
+      <React.Suspense fallback={<Loader />}>
+        <Dashboard />
+      </React.Suspense>
+    )
+  }
 ]);

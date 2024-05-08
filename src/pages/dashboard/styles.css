@@ -1,0 +1,21 @@
+.dashboard-container {
+    display: flex;
+}
+
+.dashboard-view-section {
+    width: 100%;
+}
+
+.dashboard-hero-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.dashboard-hero-section p {
+    font-weight: 500;
+    font-size: larger;
+}

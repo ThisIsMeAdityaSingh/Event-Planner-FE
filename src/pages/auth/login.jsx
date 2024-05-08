@@ -1,8 +1,15 @@
 import {Chrome, Facebook} from 'lucide-react'
+import {useNavigate} from 'react-router-dom';
 import "./auth.css";
 import { Link } from 'react-router-dom';
 
 export default function Login(){
+    const navigate = useNavigate();
+
+    const handleLoginFormSubmit = (event) => {
+        event.preventDefault();
+        navigate('/dashboard');
+    };
     return (
         <main className="auth-page-container">
         <section className="auth-form-section">
@@ -25,7 +32,7 @@ export default function Login(){
                 <div className='line'></div>
             </div>
             <br />
-            <form className='auth-section-sign-up-form'>
+            <form className='auth-section-sign-up-form' onSubmit={handleLoginFormSubmit}>
                 <label htmlFor='auth-page-email'>Email Address</label>
                 <input id='auth-page-email' name='email' type='text' placeholder='your@example.com' />
                 <br />
