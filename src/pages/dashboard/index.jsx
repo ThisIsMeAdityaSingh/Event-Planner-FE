@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Menu, Button } from "antd";
+import { Menu } from "antd";
 import {
   TeamOutlined,
   GlobalOutlined,
@@ -10,6 +10,7 @@ import {
 import "./styles.css";
 import { DashboardEventGrid, DashboardTasksGrid } from "../../components/index";
 import Loader from "../loading-page";
+import {CreateEventModal} from "../../components/index";
 
 export default function Dashboard() {
   const items = [
@@ -68,9 +69,9 @@ export default function Dashboard() {
       <section className="dashboard-view-section">
         <div className="dashboard-hero-section">
           <p>Upcoming Events</p>
-          <Button type="primary" size={"large"}>
-            Create Event
-          </Button>
+          <Suspense fallback={<Loader />}>
+            <CreateEventModal />
+          </Suspense>
         </div>
         <div className="dashboard-events-table">
           <Suspense fallback={<Loader />}>
