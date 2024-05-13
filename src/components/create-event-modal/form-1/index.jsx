@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import {useState, useRef, useMemo} from 'react';
+import { useState, useRef, useMemo } from "react";
 import { Form, Input, DatePicker, Spin, Select } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import debounce from 'lodash/debounce';
+import debounce from "lodash/debounce";
 
-export function EventFormOne() {
+export function EventFormOne({ formState, errorState, handleOnInputChange }) {
   return (
     <>
       <Form.Item
@@ -13,7 +13,12 @@ export function EventFormOne() {
         tooltip="For example, 'Company Retreat' or 'Holi Party' etc."
         name="eventName"
       >
-        <Input status="error" placeholder="Enter you event name" />
+        <Input
+          status={errorState["eventName"] ? "error" : ""}
+          placeholder="Enter you event name"
+          onChange={handleOnInputChange}
+          value={formState["eventName"] || ""}
+        />
       </Form.Item>
       <Form.Item
         label="Event Description"
@@ -24,13 +29,17 @@ export function EventFormOne() {
           icon: <InfoCircleOutlined />,
         }}
       >
-        <Input placeholder="Enter you event description" />
+        <Input
+          placeholder="Enter you event description"
+          onChange={handleOnInputChange}
+          value={formState["eventDescription"] || ""}
+        />
       </Form.Item>
     </>
   );
 }
 
-export function EventFormTwo() {
+export function EventFormTwo({ formState, errorState, handleOnInputChange }) {
   const { RangePicker } = DatePicker;
   const onOk = (value) => {
     console.log("onOk: ", value);
@@ -64,7 +73,12 @@ export function EventFormTwo() {
           icon: <InfoCircleOutlined />,
         }}
       >
-        <Input placeholder="Enter you event venue" />
+        <Input
+          status={errorState["eventVenue"] ? "error" : ""}
+          placeholder="Enter you event venue"
+          value={formState["eventVenue"]}
+          onChange={handleOnInputChange}
+        />
       </Form.Item>
     </>
   );
@@ -115,7 +129,7 @@ function DebounceSelect({ fetchOptions, debounceTimeout = 800, ...props }) {
   );
 }
 
-export function EventFormThree(){
+export function EventFormThree({ formState, errorState, handleOnInputChange }) {
   const [value, setValue] = useState([]);
   return (
     <DebounceSelect
@@ -127,7 +141,7 @@ export function EventFormThree(){
         setValue(newValue);
       }}
       style={{
-        width: '100%',
+        width: "100%",
       }}
     />
   );
